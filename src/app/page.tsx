@@ -13,11 +13,11 @@ export default function Home() {
           height={37}
           priority
         /> */}
-        <h1 className="text-center">
+        <h2 className="text-center">
           Professional Email Address
           <br /> Guesses Generator
           <br /> (PEAG)
-        </h1>
+        </h2>
       </div>
 
       <div className={styles.center}>
