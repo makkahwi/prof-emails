@@ -1,6 +1,11 @@
 "use client";
 
 export default function Form() {
+  const inputs = [
+    { name: "name", label: "Person First + Last Name", required: true },
+    { name: "domain", label: "Domain", required: true },
+  ];
+
   const generator = (name = "Suhaib Ahmad", userDomain = "hotmail.com") => {
     const domain = userDomain
       .replace("https://www.", "")
@@ -71,19 +76,26 @@ export default function Form() {
 
   return (
     <form
-      onSubmit={(e) =>
-        generator(e.target?.name?.value, e.target?.domain?.value)
-      }
-    >
-      <div className="input">
-        <label>Person First + Last Name</label>
-        <input name="name" required />
-      </div>
+      onSubmit={(e) => {
+        e.preventDefault();
 
-      <div className="input">
-        <label>Domain</label>
-        <input name="domain" required />
-      </div>
+        const values = inputs.reduce(
+          (final, current) => ({
+            ...final,
+            [current.name]: (e.target as any)[current.name].value,
+          }),
+          { name: "", domain: "" }
+        );
+
+        generator(values.name, values.domain);
+      }}
+    >
+      {inputs.map(({ label, name, required }, i) => (
+        <div className="input" key={i}>
+          <label>{label}</label>
+          <input name={name} required={required} />
+        </div>
+      ))}
     </form>
   );
 }
