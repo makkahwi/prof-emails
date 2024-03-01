@@ -20,9 +20,7 @@ export default function Home() {
         </h2>
       </div>
 
-      <div>
-        <Form />
-      </div>
+      <Form />
 
       <div>
         All Rights Reserved For{" "}

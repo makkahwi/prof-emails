@@ -75,41 +75,43 @@ export default function Form() {
     names.push(lastModName[0] + "-" + firstName + "@" + domain);
     names.push(lastModName[0] + "_" + firstName + "@" + domain);
 
-    setResult(names.join("; "));
+    setResult(names.join("; ") + ";");
   };
 
   return (
     <Fragment>
-      <form
-        onSubmit={(e) => {
-          e.preventDefault();
+      <div>
+        <form
+          onSubmit={(e) => {
+            e.preventDefault();
 
-          const values = inputs.reduce(
-            (final, current) => ({
-              ...final,
-              [current.name]: (e.target as any)[current.name].value,
-            }),
-            { name: "", domain: "" }
-          );
+            const values = inputs.reduce(
+              (final, current) => ({
+                ...final,
+                [current.name]: (e.target as any)[current.name].value,
+              }),
+              { name: "", domain: "" }
+            );
 
-          generator(values.name, values.domain);
-        }}
-      >
-        {inputs.map(({ label, name, required }, i) => (
-          <div className="input" key={i}>
-            <label>{label}</label>
-            <input name={name} required={required} />
-          </div>
-        ))}
+            generator(values.name, values.domain);
+          }}
+        >
+          {inputs.map(({ label, name, required }, i) => (
+            <div className="input" key={i}>
+              <label>{label}</label>
+              <input name={name} required={required} />
+            </div>
+          ))}
 
-        <button className="button" type="submit">
-          Generate
-        </button>
-      </form>
+          <button className="button" type="submit">
+            Generate
+          </button>
+        </form>
+      </div>
 
       {result ? (
-        <div>
-          <h4>Result</h4>
+        <div className="margin">
+          <h3 className="margin">Result</h3>
           <p>{result}</p>
         </div>
       ) : (
