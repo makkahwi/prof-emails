@@ -20,7 +20,7 @@ export default function Home() {
         </h2>
       </div>
 
-      <div className={styles.center}>
+      <div>
         <Form />
       </div>
 
