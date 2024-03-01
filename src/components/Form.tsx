@@ -96,6 +96,10 @@ export default function Form() {
           <input name={name} required={required} />
         </div>
       ))}
+
+      <button className="button" type="submit">
+        Generate
+      </button>
     </form>
   );
 }
