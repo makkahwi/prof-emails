@@ -109,7 +109,7 @@ export default function Form() {
           className="row"
         >
           {inputs.map(({ label, name, required, info }, i) => (
-            <div className="col-md-6 my-3" key={i}>
+            <div className="col-md-12 my-3" key={i}>
               <label className="form-label">{label}</label>
 
               <input className="form-control" name={name} required={required} />
