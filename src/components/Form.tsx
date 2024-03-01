@@ -1,6 +1,10 @@
 "use client";
 
+import { Fragment, useState } from "react";
+
 export default function Form() {
+  const [result, setResult] = useState("");
+
   const inputs = [
     { name: "name", label: "Person First + Last Name", required: true },
     { name: "domain", label: "Domain", required: true },
@@ -71,35 +75,46 @@ export default function Form() {
     names.push(lastModName[0] + "-" + firstName + "@" + domain);
     names.push(lastModName[0] + "_" + firstName + "@" + domain);
 
-    console.log(names.join("; "));
+    setResult(names.join("; "));
   };
 
   return (
-    <form
-      onSubmit={(e) => {
-        e.preventDefault();
+    <Fragment>
+      <form
+        onSubmit={(e) => {
+          e.preventDefault();
 
-        const values = inputs.reduce(
-          (final, current) => ({
-            ...final,
-            [current.name]: (e.target as any)[current.name].value,
-          }),
-          { name: "", domain: "" }
-        );
+          const values = inputs.reduce(
+            (final, current) => ({
+              ...final,
+              [current.name]: (e.target as any)[current.name].value,
+            }),
+            { name: "", domain: "" }
+          );
 
-        generator(values.name, values.domain);
-      }}
-    >
-      {inputs.map(({ label, name, required }, i) => (
-        <div className="input" key={i}>
-          <label>{label}</label>
-          <input name={name} required={required} />
+          generator(values.name, values.domain);
+        }}
+      >
+        {inputs.map(({ label, name, required }, i) => (
+          <div className="input" key={i}>
+            <label>{label}</label>
+            <input name={name} required={required} />
+          </div>
+        ))}
+
+        <button className="button" type="submit">
+          Generate
+        </button>
+      </form>
+
+      {result ? (
+        <div>
+          <h4>Result</h4>
+          <p>{result}</p>
         </div>
-      ))}
-
-      <button className="button" type="submit">
-        Generate
-      </button>
-    </form>
+      ) : (
+        ""
+      )}
+    </Fragment>
   );
 }
