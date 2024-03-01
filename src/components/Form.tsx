@@ -125,8 +125,8 @@ export default function Form() {
       </div>
 
       {result ? (
-        <div className="margin">
-          <h3 className="margin">Result</h3>
+        <div className="pt-2">
+          <h3 className="pt-2">Result</h3>
           <p>{result}</p>
         </div>
       ) : (
