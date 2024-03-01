@@ -10,9 +10,9 @@ export default function Form() {
       name: "name",
       label: "Person First + Last Name",
       required: true,
-      regex: /^[a-zA-Z.+'-]+(?:\s[a-zA-Z.+'-]+)*\s?$/,
+      regex: /^[a-z ,.'-]+$/i,
     },
-    { name: "domain", label: "Domain", required: true, regex: /^\S*$/ },
+    { name: "domain", label: "Domain", required: true },
   ];
 
   const generator = (name = "Suhaib Ahmad", userDomain = "hotmail.com") => {
@@ -20,7 +20,8 @@ export default function Form() {
       .replace("https://www.", "")
       .replace("http://www.", "")
       .replace("https://", "")
-      .replace("http://", "");
+      .replace("http://", "")
+      .replaceAll("/", "");
     const firstName = name.split(" ")[0];
     const lastName = name.replace("-", "").split(" ")[1];
     const lastModName = name.replace("al", "").split(" ")[1];
