@@ -110,16 +110,11 @@ export default function Form() {
         >
           {inputs.map(({ label, name, required, info }, i) => (
             <div className="col-md-6 my-3" key={i}>
-              <label
-                className="form-label"
-                data-bs-toggle="tooltip"
-                data-bs-placement="top"
-                data-bs-title={info}
-              >
-                {label}
-              </label>
+              <label className="form-label">{label}</label>
 
               <input className="form-control" name={name} required={required} />
+
+              <small className="form-label text-danger">{info}</small>
             </div>
           ))}
 
