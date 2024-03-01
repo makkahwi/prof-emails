@@ -10,7 +10,7 @@ export default function Form() {
       name: "name",
       label: "Person First + Last Name",
       required: true,
-      regex: /^(\w+\s)*\w+$/,
+      regex: /^([A-Za-z]+ )+[A-Za-z]+$|^[A-Za-z]+$/,
     },
     { name: "domain", label: "Domain", required: true, regex: /^\S*$/ },
   ];
