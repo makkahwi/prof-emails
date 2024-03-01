@@ -8,11 +8,16 @@ export default function Form() {
   const inputs = [
     {
       name: "name",
-      label: "Person First + Last Name",
+      label: "Person Name",
       required: true,
-      regex: /^[a-z ,.'-]+$/i,
+      info: "Please only insert first and last name with only 1 space between, and no any other spaces.",
     },
-    { name: "domain", label: "Domain", required: true },
+    {
+      name: "domain",
+      label: "Domain",
+      required: true,
+      info: "Please stop @ domain extension (.com, .net), no / at end or anything else",
+    },
   ];
 
   const generator = (name = "Suhaib Ahmad", userDomain = "hotmail.com") => {
@@ -102,10 +107,13 @@ export default function Form() {
             generator(values.name, values.domain);
           }}
         >
-          {inputs.map(({ label, name, required, regex }, i) => (
+          {inputs.map(({ label, name, required, info }, i) => (
             <div className="input" key={i}>
               <label>{label}</label>
-              <input name={name} required={required} pattern={String(regex)} />
+              <input name={name} required={required} />
+              <div>
+                <label>{info}</label>
+              </div>
             </div>
           ))}
 
