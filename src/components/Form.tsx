@@ -6,8 +6,13 @@ export default function Form() {
   const [result, setResult] = useState("");
 
   const inputs = [
-    { name: "name", label: "Person First + Last Name", required: true },
-    { name: "domain", label: "Domain", required: true },
+    {
+      name: "name",
+      label: "Person First + Last Name",
+      required: true,
+      regex: /^(\w+\s)*\w+$/,
+    },
+    { name: "domain", label: "Domain", required: true, regex: /^\S*$/ },
   ];
 
   const generator = (name = "Suhaib Ahmad", userDomain = "hotmail.com") => {
@@ -96,10 +101,10 @@ export default function Form() {
             generator(values.name, values.domain);
           }}
         >
-          {inputs.map(({ label, name, required }, i) => (
+          {inputs.map(({ label, name, required, regex }, i) => (
             <div className="input" key={i}>
               <label>{label}</label>
-              <input name={name} required={required} />
+              <input name={name} required={required} pattern={String(regex)} />
             </div>
           ))}
 
