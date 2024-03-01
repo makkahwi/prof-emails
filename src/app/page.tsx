@@ -1,94 +1,113 @@
 import Image from "next/image";
+
 import styles from "./page.module.css";
 
 export default function Home() {
+  const generator = (name = "Suhaib Ahmad", userDomain = "hotmail.com") => {
+    const domain = userDomain
+      .replace("https://www.", "")
+      .replace("http://www.", "")
+      .replace("https://", "")
+      .replace("http://", "");
+    const firstName = name.split(" ")[0];
+    const lastName = name.replace("-", "").split(" ")[1];
+    const lastModName = name.replace("al", "").split(" ")[1];
+
+    const names = [];
+
+    // Full Name
+    names.push(name.replace(" ", "") + "@" + domain);
+    names.push(name.replace(" ", ".") + "@" + domain);
+    names.push(name.replace(" ", "-") + "@" + domain);
+    names.push(name.replace(" ", "_") + "@" + domain);
+
+    // First Name
+    names.push(firstName + "@" + domain);
+
+    names.push(firstName[0] + "" + lastName + "@" + domain);
+    names.push(firstName[0] + "." + lastName + "@" + domain);
+    names.push(firstName[0] + "-" + lastName + "@" + domain);
+    names.push(firstName[0] + "_" + lastName + "@" + domain);
+
+    names.push(lastName + "" + firstName[0] + "@" + domain);
+    names.push(lastName + "." + firstName[0] + "@" + domain);
+    names.push(lastName + "-" + firstName[0] + "@" + domain);
+    names.push(lastName + "_" + firstName[0] + "@" + domain);
+
+    names.push(firstName[0] + "" + lastModName + "@" + domain);
+    names.push(firstName[0] + "." + lastModName + "@" + domain);
+    names.push(firstName[0] + "-" + lastModName + "@" + domain);
+    names.push(firstName[0] + "_" + lastModName + "@" + domain);
+
+    names.push(lastModName + "" + firstName[0] + "@" + domain);
+    names.push(lastModName + "." + firstName[0] + "@" + domain);
+    names.push(lastModName + "-" + firstName[0] + "@" + domain);
+    names.push(lastModName + "_" + firstName[0] + "@" + domain);
+
+    // Last Name
+    names.push(lastName + "@" + domain);
+    names.push(lastModName + "@" + domain);
+
+    names.push(firstName + "" + lastName[0] + "@" + domain);
+    names.push(firstName + "." + lastName[0] + "@" + domain);
+    names.push(firstName + "-" + lastName[0] + "@" + domain);
+    names.push(firstName + "_" + lastName[0] + "@" + domain);
+
+    names.push(lastName[0] + "" + firstName + "@" + domain);
+    names.push(lastName[0] + "." + firstName + "@" + domain);
+    names.push(lastName[0] + "-" + firstName + "@" + domain);
+    names.push(lastName[0] + "_" + firstName + "@" + domain);
+
+    names.push(firstName + "" + lastModName[0] + "@" + domain);
+    names.push(firstName + "." + lastModName[0] + "@" + domain);
+    names.push(firstName + "-" + lastModName[0] + "@" + domain);
+    names.push(firstName + "_" + lastModName[0] + "@" + domain);
+
+    names.push(lastModName[0] + "" + firstName + "@" + domain);
+    names.push(lastModName[0] + "." + firstName + "@" + domain);
+    names.push(lastModName[0] + "-" + firstName + "@" + domain);
+    names.push(lastModName[0] + "_" + firstName + "@" + domain);
+
+    console.log(names.join("; "));
+  };
+
   return (
     <main className={styles.main}>
-      <div className={styles.description}>
-        <p>
-          Get started by editing&nbsp;
-          <code className={styles.code}>src/app/page.tsx</code>
-        </p>
-        <div>
-          <a
-            href="https://vercel.com?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            By{" "}
-            <Image
-              src="/vercel.svg"
-              alt="Vercel Logo"
-              className={styles.vercelLogo}
-              width={100}
-              height={24}
-              priority
-            />
-          </a>
-        </div>
-      </div>
-
       <div className={styles.center}>
-        <Image
+        {/* <Image
           className={styles.logo}
           src="/next.svg"
           alt="Next.js Logo"
           width={180}
           height={37}
           priority
-        />
+        /> */}
+        <h1 className="text-center">
+          Professional Email Address
+          <br /> Guesses Generator
+        </h1>
       </div>
 
-      <div className={styles.grid}>
-        <a
-          href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-          className={styles.card}
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <h2>
-            Docs <span>-&gt;</span>
-          </h2>
-          <p>Find in-depth information about Next.js features and API.</p>
-        </a>
+      <div className={styles.center}>
+        <form>
+          <div className="input">
+            <label>Person First + Last Name</label>
+            <input name="name" />
+          </div>
 
-        <a
-          href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-          className={styles.card}
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <h2>
-            Learn <span>-&gt;</span>
-          </h2>
-          <p>Learn about Next.js in an interactive course with&nbsp;quizzes!</p>
-        </a>
+          <div className="input">
+            <label>Domain</label>
+            <input name="domain" />
+          </div>
+        </form>
+      </div>
 
-        <a
-          href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-          className={styles.card}
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <h2>
-            Templates <span>-&gt;</span>
-          </h2>
-          <p>Explore starter templates for Next.js.</p>
-        </a>
-
-        <a
-          href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-          className={styles.card}
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <h2>
-            Deploy <span>-&gt;</span>
-          </h2>
-          <p>
-            Instantly deploy your Next.js site to a shareable URL with Vercel.
-          </p>
-        </a>
+      <div>
+        All Rights Reserved For{" "}
+        <a href="https://suhaib.dev" target="_blank">
+          Suhaib Ahmad
+        </a>{" "}
+        {new Date().getFullYear()}
       </div>
     </main>
   );

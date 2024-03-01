@@ -40,6 +40,21 @@
   --card-border-rgb: 131, 134, 135;
 }
 
+.input {
+  width: 100%;
+  margin: 2vh 2vw;
+}
+
+.input label,
+.input input {
+  padding: 5px;
+  width: 50%;
+}
+
+.text-center {
+  text-align: center;
+}
+
 @media (prefers-color-scheme: dark) {
   :root {
     --foreground-rgb: 255, 255, 255;
