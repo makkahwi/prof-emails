@@ -16,6 +16,7 @@ export default function Home() {
         <h1 className="text-center">
           Professional Email Address
           <br /> Guesses Generator
+          <br /> (PEAG)
         </h1>
       </div>
 
