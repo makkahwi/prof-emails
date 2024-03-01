@@ -106,18 +106,24 @@ export default function Form() {
 
             generator(values.name, values.domain);
           }}
+          className="row"
         >
           {inputs.map(({ label, name, required, info }, i) => (
-            <div className="input" key={i}>
-              <label>{label}</label>
-              <input name={name} required={required} />
-              <div>
-                <label>{info}</label>
-              </div>
+            <div className="col-md-6 my-3" key={i}>
+              <label
+                className="form-label"
+                data-bs-toggle="tooltip"
+                data-bs-placement="top"
+                data-bs-title={info}
+              >
+                {label}
+              </label>
+
+              <input className="form-control" name={name} required={required} />
             </div>
           ))}
 
-          <button className="button" type="submit">
+          <button className="btn btn-dark col-md-12 my-3" type="submit">
             Generate
           </button>
         </form>

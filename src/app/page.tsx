@@ -22,12 +22,16 @@ export default function Home() {
 
       <Form />
 
-      <div>
-        All Rights Reserved For{" "}
-        <a href="https://suhaib.dev" target="_blank">
-          Suhaib Ahmad
-        </a>{" "}
-        {new Date().getFullYear()}
+      <div className="container">
+        <footer className="py-3 my-4">
+          <p className="text-center text-body-secondary">
+            All Rights Reserved For{" "}
+            <a href="https://suhaib.dev" target="_blank">
+              Suhaib Ahmad
+            </a>{" "}
+            {new Date().getFullYear()}
+          </p>
+        </footer>
       </div>
     </main>
   );
